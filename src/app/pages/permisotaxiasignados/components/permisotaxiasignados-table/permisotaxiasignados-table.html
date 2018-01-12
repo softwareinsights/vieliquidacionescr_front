@@ -1,0 +1,61 @@
+<div class='widgets'>
+    <div class='row'>
+        <ba-card title='Listado' baCardClass='with-scroll' class='data-table-container'>
+            <div class='panel panel-default'>
+                <table class='table table-striped' [mfData]='data | permisotaxiasignadosDataFilter : filterQuery' #mf='mfDataTable' [mfRowsOnPage]='rowsOnPage' [(mfSortBy)]='sortBy' [(mfSortOrder)]='sortOrder'>
+                    <thead>
+                        <tr>
+                            <th colspan='6' class='text-left'>
+                                Filtrar por Status:
+                                <input class='form-control' [(ngModel)]='filterQuery' />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style='width: 20%'></th>
+                            <th style='width: 16%'>
+                                <mfDefaultSorter by='status'>Status</mfDefaultSorter>
+                            </th>
+                            <th style='width: 16%'>
+                                <mfDefaultSorter by='fecha'>Fecha</mfDefaultSorter>
+                            </th>
+                            <th style='width: 16%'>
+                                <mfDefaultSorter by='chofer_chofer_idchofer'>Chofer</mfDefaultSorter>
+                            </th>
+                            <th style='width: 16%'>
+                                <mfDefaultSorter by='vehiculo_vehiculo_idvehiculo'>Vehículo</mfDefaultSorter>
+                            </th>
+                            <th style='width: 16%'>
+                                <mfDefaultSorter by='permisotaxi_permisotaxi_idpermisotaxi'>Permiso Taxi</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of mf.data;  let i = index'>
+                            <td>
+                                <button (click)='editModalShow(item)' class='btn btn-sm btn-info'><i class='fa fa-edit'></i></button>
+                                <button (click)='onDeleteConfirm($event, item)' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i></button>
+                            </td>
+                            <td>{{ item.status  }}</td>
+                            <td>{{ item.fecha | date:'dd/MM/y' }}</td>
+                            <td>{{ item.chofer_chofer_idchofer }}</td>
+                            <td>{{ item.vehiculo_vehiculo_idvehiculo }}</td>
+                            <td>{{ item.permisotaxi_permisotaxi_idpermisotaxi }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan='5'>
+                                <mfBootstrapPaginator [rowsOnPageSet]='[5,10,15]'></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <button (click)='addModalShow()' class='btn btn-success'><i class='fa fa-plus'></i> Agregar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class='widgets'>
+    <div class='row'>
+        <ba-card title='Listado' baCardClass='with-scroll' class='data-table-container'>
+            <div class='panel panel-default'>
+                <table class='table table-striped' [mfData]='data | vehiculoreparandosDataFilter : filterQuery' #mf='mfDataTable' [mfRowsOnPage]='rowsOnPage' [(mfSortBy)]='sortBy' [(mfSortOrder)]='sortOrder'>
+                    <thead>
+                        <tr>
+                            <th colspan='12' class='text-left'>
+                                Filtrar por Status:
+                                <input class='form-control' [(ngModel)]='filterQuery' />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style='width: 20%'></th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='fechaIngresa'>Fecha Ingreso</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='fechaSalida'>Fecha Salida</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='fechaEstimada'>Fecha Estimada</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='inventario'>Inventario</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='motivo'>Motivo</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='status'>Status</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='orden'>Orden</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='enviotaller_enviotaller_idenviotaller'>Envio Taller</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='taller_taller_idtaller'>Taller</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='mecanico_mecanico_idmecanico'>Mecánico</mfDefaultSorter>
+                            </th>
+                            <th style='width: 7.2727272727273%'>
+                                <mfDefaultSorter by='permisotaxiasignado_permisotaxiasignado_idpermisotaxiasignado'>Permiso Taxi</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of mf.data;  let i = index'>
+                            <td>
+                                <button (click)='editModalShow(item)' class='btn btn-sm btn-info'><i class='fa fa-edit'></i></button>
+                                <button (click)='onDeleteConfirm($event, item)' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i></button>
+                            </td>
+                            <td>{{ item.fechaIngresa  }}</td>
+                            <td>{{ item.fechaSalida  }}</td>
+                            <td>{{ item.fechaEstimada  }}</td>
+                            <td>{{ item.inventario  }}</td>
+                            <td>{{ item.motivo  }}</td>
+                            <td>{{ item.status  }}</td>
+                            <td>{{ item.orden  }}</td>
+                            <td>{{ item.enviotaller_enviotaller_idenviotaller }}</td>
+                            <td>{{ item.taller_taller_idtaller }}</td>
+                            <td>{{ item.mecanico_mecanico_idmecanico }}</td>
+                            <td>{{ item.permisotaxiasignado_permisotaxiasignado_idpermisotaxiasignado }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan='5'>
+                                <mfBootstrapPaginator [rowsOnPageSet]='[5,10,15]'></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <button (click)='addModalShow()' class='btn btn-success'><i class='fa fa-plus'></i> Agregar</button>
+        </div>
+    </div>
+</div>

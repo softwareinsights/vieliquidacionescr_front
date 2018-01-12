@@ -1,0 +1,96 @@
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="modal-content" style="overflow-y: initial !important">
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar Choferes</h4>
+          <button class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          <ba-card cardTitle="Información Choferes">
+            <div class="form-group row" [ngClass]="{'has-error': (!licenciaAC.valid && licenciaAC.touched), 'has-success': (licenciaAC.valid && licenciaAC.touched)}">
+              <label for="inputlicenciaAC" class="col-sm-3 form-control-label">Licencia</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="licencia" [formControl]="licenciaAC" type="text" maxlength='40' class="form-control" id="inputlicenciaAC" placeholder="Licencia" >
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!fianzaAC.valid && fianzaAC.touched), 'has-success': (fianzaAC.valid && fianzaAC.touched)}">
+              <label for="inputfianzaAC" class="col-sm-3 form-control-label">Fianza</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="fianza" [formControl]="fianzaAC" type="number" maxlength='11' class="form-control" id="inputfianzaAC" placeholder="Fianza" >
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!statusAC.valid && statusAC.touched), 'has-success': (statusAC.valid && statusAC.touched)}">
+              <label for="inputstatusAC" class="col-sm-3 form-control-label">Status</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="status" [formControl]="statusAC" type="text" maxlength='45' class="form-control" id="inputstatusAC" placeholder="Status" >
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!choferAC.valid && choferAC.touched), 'has-success': (choferAC.valid && choferAC.touched)}">
+              <label for="inputchoferAC" class="col-sm-3 form-control-label">Chofer</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="chofer" [formControl]="choferAC" class="form-control" id="inputchoferAC" required>
+                 <option value="{{item.idpersona}}" *ngFor="let item of _persona">{{item.nombre}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='personaAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!aval1AC.valid && aval1AC.touched), 'has-success': (aval1AC.valid && aval1AC.touched)}">
+              <label for="inputaval1AC" class="col-sm-3 form-control-label">Aval 1</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="aval1" [formControl]="aval1AC" class="form-control" id="inputaval1AC" required>
+                 <option value="{{item.idpersona}}" *ngFor="let item of _persona">{{item.nombre}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='personaAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!aval2AC.valid && aval2AC.touched), 'has-success': (aval2AC.valid && aval2AC.touched)}">
+              <label for="inputaval2AC" class="col-sm-3 form-control-label">Aval 2</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="aval2" [formControl]="aval2AC" class="form-control" id="inputaval2AC" required>
+                 <option value="{{item.idpersona}}" *ngFor="let item of _persona">{{item.nombre}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='personaAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!aval3AC.valid && aval3AC.touched), 'has-success': (aval3AC.valid && aval3AC.touched)}">
+              <label for="inputaval3AC" class="col-sm-3 form-control-label">Aval 3</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="aval3" [formControl]="aval3AC" class="form-control" id="inputaval3AC" required>
+                 <option value="{{item.idpersona}}" *ngFor="let item of _persona">{{item.nombre}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='personaAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!aval4AC.valid && aval4AC.touched), 'has-success': (aval4AC.valid && aval4AC.touched)}">
+              <label for="inputaval4AC" class="col-sm-3 form-control-label">Aval 4</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="aval4" [formControl]="aval4AC" class="form-control" id="inputaval4AC" required>
+                 <option value="{{item.idpersona}}" *ngFor="let item of _persona">{{item.nombre}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='personaAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+          </ba-card>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+          <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" (click)="onSubmit(form.value)">Aceptar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="row mt-3">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="modal-content" style="overflow-y: initial !important">
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar </h4>
+          <button class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 65vh; overflow-y: auto;">
+          <ba-card cardTitle="Información ">
+            <div class="form-group row" [ngClass]="{'has-error': (!liquidacion_idliquidacionAC.valid && liquidacion_idliquidacionAC.touched), 'has-success': (liquidacion_idliquidacionAC.valid && liquidacion_idliquidacionAC.touched)}">
+              <label for="inputliquidacion_idliquidacionAC" class="col-sm-3 form-control-label">Liquidacion_idliquidacion</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="liquidacion_idliquidacion" [formControl]="liquidacion_idliquidacionAC" class="form-control" id="inputliquidacion_idliquidacionAC" required>
+                 <option value="{{item.idliquidacion}}" *ngFor="let item of _liquidacion">{{item.idliquidacion}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='liquidacionAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!folio_idfolioAC.valid && folio_idfolioAC.touched), 'has-success': (folio_idfolioAC.valid && folio_idfolioAC.touched)}">
+              <label for="inputfolio_idfolioAC" class="col-sm-3 form-control-label">Folio_idfolio</label>
+              <div class="col-sm-7">
+               <select [(ngModel)]="folio_idfolio" [formControl]="folio_idfolioAC" class="form-control" id="inputfolio_idfolioAC" required>
+                 <option value="{{item.idfolio}}" *ngFor="let item of _folio">{{item.idfolio}}</option>
+               </select>
+              </div>
+              <div class='col-sm-2'>
+                <button (click)='folioAddModalShow()' class='btn btn-primary'><i class='fa fa-plus'></i></button>
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!bajaAC.valid && bajaAC.touched), 'has-success': (bajaAC.valid && bajaAC.touched)}">
+              <label for="inputbajaAC" class="col-sm-3 form-check-label">Baja</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="baja" [formControl]="bajaAC" type="checkbox" class="form-check-input" id="inputbajaAC">
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!created_byAC.valid && created_byAC.touched), 'has-success': (created_byAC.valid && created_byAC.touched)}">
+              <label for="inputcreated_byAC" class="col-sm-3 form-control-label">Created_by</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="created_by" [formControl]="created_byAC" type="number" maxlength='11' class="form-control" id="inputcreated_byAC" placeholder="Created_by" >
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!created_atAC.valid && created_atAC.touched), 'has-success': (created_atAC.valid && created_atAC.touched)}">
+              <label for="inputcreated_atAC" class="col-sm-3 form-control-label">Created_at</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="created_at" [formControl]="created_atAC" type="date"  class="form-control" id="inputcreated_atAC" placeholder="Created_at" >
+              </div>
+            </div>
+            <div class="form-group row" [ngClass]="{'has-error': (!modified_atAC.valid && modified_atAC.touched), 'has-success': (modified_atAC.valid && modified_atAC.touched)}">
+              <label for="inputmodified_atAC" class="col-sm-3 form-control-label">Modified_at</label>
+              <div class="col-sm-9">
+                <input [(ngModel)]="modified_at" [formControl]="modified_atAC" type="date"  class="form-control" id="inputmodified_atAC" placeholder="Modified_at" >
+              </div>
+            </div>
+          </ba-card>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger cancel-btn" (click)="close()">Cancelar</button>
+          <button [disabled]="!form.valid" class="btn btn-primary confirm-btn" (click)="onSubmit(form.value)">Aceptar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

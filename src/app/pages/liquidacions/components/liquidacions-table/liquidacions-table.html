@@ -1,0 +1,89 @@
+<div class='widgets'>
+    <div class='row'>
+        <ba-card title='Listado' baCardClass='with-scroll' class='data-table-container'>
+            <div class='panel panel-default'>
+                <table class='table table-striped' [mfData]='data | liquidacionsDataFilter : filterQuery' #mf='mfDataTable' [mfRowsOnPage]='rowsOnPage' [(mfSortBy)]='sortBy' [(mfSortOrder)]='sortOrder'>
+                    <thead>
+                        <tr>
+                            <th colspan='13' class='text-left'>
+                                Filtrar por Status:
+                                <input class='form-control' [(ngModel)]='filterQuery' />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style='width: 20%'></th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='cantidadRecibida'>Cantidad Recibida</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='cambio'>Cambio</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='folio'>Folio</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='kilometraje'>Kilometraje</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='fecha'>Fecha</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='nota'>Nota</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='cantPagada'>Cantidad Pagada</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='cantDeuda'>Cantidad Deuda</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='status'>Status</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='bonificado'>Bonificado</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='descripcion'>Descripción</mfDefaultSorter>
+                            </th>
+                            <th style='width: 6.6666666666667%'>
+                                <mfDefaultSorter by='chofer_chofer_idchofer'>Chofer</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of mf.data;  let i = index'>
+                            <td>
+                                <button (click)='editModalShow(item)' class='btn btn-sm btn-info'><i class='fa fa-edit'></i></button>
+                                <button (click)='onDeleteConfirm($event, item)' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i></button>
+                            </td>
+                            <td>{{ item.cantidadRecibida  }}</td>
+                            <td>{{ item.cambio  }}</td>
+                            <td>{{ item.folio  }}</td>
+                            <td>{{ item.kilometraje  }}</td>
+                            <td>{{ item.fecha | date:'dd/MM/y' }}</td>
+                            <td>{{ item.nota  }}</td>
+                            <td>{{ item.cantPagada  }}</td>
+                            <td>{{ item.cantDeuda  }}</td>
+                            <td>{{ item.status  }}</td>
+                            <td>{{ item.bonificado  }}</td>
+                            <td>{{ item.descripcion  }}</td>
+                            <td>{{ item.chofer_chofer_idchofer }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan='5'>
+                                <mfBootstrapPaginator [rowsOnPageSet]='[5,10,15]'></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <button (click)='addModalShow()' class='btn btn-success'><i class='fa fa-plus'></i> Agregar</button>
+        </div>
+    </div>
+</div>

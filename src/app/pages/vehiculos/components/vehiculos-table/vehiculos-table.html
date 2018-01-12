@@ -1,0 +1,97 @@
+<div class='widgets'>
+    <div class='row'>
+        <ba-card title='Listado' baCardClass='with-scroll' class='data-table-container'>
+            <div class='panel panel-default'>
+                <table class='table table-striped' [mfData]='data | vehiculosDataFilter : filterQuery' #mf='mfDataTable' [mfRowsOnPage]='rowsOnPage' [(mfSortBy)]='sortBy' [(mfSortOrder)]='sortOrder'>
+                    <thead>
+                        <tr>
+                            <th colspan='15' class='text-left'>
+                                Filtrar por Placa:
+                                <input class='form-control' [(ngModel)]='filterQuery' />
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style='width: 20%'></th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='marca'>Marca</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='modelo'>Modelo</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='anio'>Año</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='serie'>Serie</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='serieMotor'>Serie Motor</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='placa'>Placa</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='kilometraje'>Kilometraje</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='status'>Status</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='poliza'>Póliza</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='polizaTipo'>Póliza Tipo</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='condActual'>Condición Actual</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='condInicial'>Condición Inicial</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='color'>Color</mfDefaultSorter>
+                            </th>
+                            <th style='width: 5.7142857142857%'>
+                                <mfDefaultSorter by='persona_propietario'>Propietario</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let item of mf.data;  let i = index'>
+                            <td>
+                                <button (click)='editModalShow(item)' class='btn btn-sm btn-info'><i class='fa fa-edit'></i></button>
+                                <button (click)='onDeleteConfirm($event, item)' class='btn btn-sm btn-danger'><i class='fa fa-trash'></i></button>
+                            </td>
+                            <td>{{ item.marca  }}</td>
+                            <td>{{ item.modelo  }}</td>
+                            <td>{{ item.anio  }}</td>
+                            <td>{{ item.serie  }}</td>
+                            <td>{{ item.serieMotor  }}</td>
+                            <td>{{ item.placa  }}</td>
+                            <td>{{ item.kilometraje  }}</td>
+                            <td>{{ item.status  }}</td>
+                            <td>{{ item.poliza  }}</td>
+                            <td>{{ item.polizaTipo  }}</td>
+                            <td>{{ item.condActual  }}</td>
+                            <td>{{ item.condInicial  }}</td>
+                            <td>{{ item.color  }}</td>
+                            <td>{{ item.persona_propietario }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan='5'>
+                                <mfBootstrapPaginator [rowsOnPageSet]='[5,10,15]'></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </ba-card>
+    </div>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <button (click)='addModalShow()' class='btn btn-success'><i class='fa fa-plus'></i> Agregar</button>
+        </div>
+    </div>
+</div>
